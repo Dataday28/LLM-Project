@@ -1,0 +1,33 @@
+{
+    "fechas_importantes": [
+        {
+            "descripcion": "Pagar tarjeta",
+            "fecha": "2024-08-22"
+        },
+        {
+            "descripcion": "Día del cliente",
+            "fecha": "2024-08-20"
+        }
+    ],
+    "eventos": [],
+    "tareas": [
+        {
+            "descripcion": "Entrgar proyecto de LLM",
+            "fecha_limite": "2024-09-02",
+            "prioridad": "Alta",
+            "estado": "En"
+        },
+        {
+            "descripcion": "Preparar informe mensual",
+            "fecha_limite": "2024-08-07",
+            "prioridad": "Alta",
+            "estado": "Pendiente"
+        },
+        {
+            "descripcion": "Actualizar sitio web",
+            "fecha_limite": "2024-08-12",
+            "prioridad": "Media",
+            "estado": "Completado"
+        }
+    ]
+}
