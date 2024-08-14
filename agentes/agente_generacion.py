@@ -2,9 +2,9 @@ from llm.gemini import get_response_creative
 
 class AgenteGen:
 
-    def generar_ideas(self, informacion):
+    def generate_ideas(self, informacion):
 
-        template_rag = """
+        template= """
         Eres un asistente personal.
         Tu trabajo sera generar ideas, sugerencias o soluciones creativas basandote en la informacion proporcionada.
 
@@ -22,7 +22,7 @@ class AgenteGen:
 
         """
 
-        final_prompt = template_rag.format(informacion=informacion)
+        final_prompt = template.format(informacion=informacion)
 
         response = get_response_creative(final_prompt)
 

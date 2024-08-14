@@ -1,15 +1,19 @@
 {
     "fechas_importantes": [
         {
-            "descripcion": "Pagar tarjeta",
-            "fecha": "2024-08-22"
-        },
-        {
             "descripcion": "Día del cliente",
             "fecha": "2024-08-20"
         }
     ],
-    "eventos": [],
+    "eventos": [
+        {
+            "descripcion": "Reunión con el equipo",
+            "ubicacion": "Sala de conferencias",
+            "fecha": "2024-08-20",
+            "hora": "10:00",
+            "descripcion_detallada": "Discutir el progreso del proyecto"
+        }
+    ],
     "tareas": [
         {
             "descripcion": "Entrgar proyecto de LLM",

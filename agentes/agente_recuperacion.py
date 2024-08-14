@@ -1,21 +1,23 @@
 from sentence_transformers import SentenceTransformer, util
+from llm.gemini import get_response
 import json
 import torch
-from llm.gemini import get_response
 import os
 
 
-class Agent_Rec:
+class AgentRec:
 
     current_dir = os.path.dirname(__file__)
 
     json_file_path = os.path.join(current_dir, '../agenda/agenda.json')
+
     # Función para leer el contenido de un archivo JSON
     def read_json_file(self,file_path):
         with open(file_path, 'r') as file:
             return json.load(file)
-
-    def gen_pdf(self, archivo, name):
+        
+    # Funcion para generar un JSON
+    def gen_json_file(self, archivo, name):
         with open(name, 'w') as file:
             json.dump(archivo, file, ensure_ascii=False, indent=4)
 
@@ -35,7 +37,8 @@ class Agent_Rec:
         
         return documents
     
-    def add_item(self, context, input):
+    # Función para crear un prompt para agregar o modificar un item en la agenda
+    def prompt_add_or_mod_item(self, context, input):
 
         template_rag = """
         Eres un asistente que modifica archivos JSON según las instrucciones del usuario.
@@ -57,14 +60,15 @@ class Agent_Rec:
         return response
     
     
+    # Función para realizar el cambio en la agenda
     def add_or_mod_item(self, question):
         try:
 
             agenda_data2 = self.read_json_file(self.json_file_path)
-            answer = self.add_item(agenda_data2, question)
+            answer = self.prompt_add_or_mod_item(agenda_data2, question)
 
             json_data = json.loads(answer)
-            self.gen_pdf(json_data, self.json_file_path)
+            self.gen_json_file(json_data, self.json_file_path)
 
             result = "El cambio ha sido realizado con éxito."
 

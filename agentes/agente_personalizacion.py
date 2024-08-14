@@ -2,7 +2,7 @@ from llm.gemini import get_response
 
 class AgentPers:
 
-    def saludo(self):
+    def greeting(self):
 
         template_rag = """
         Eres un asistente personal.
@@ -18,7 +18,7 @@ class AgentPers:
 
         return response
 
-    def despedida(self):
+    def farewell(self):
 
         template_rag = """
         Eres un asistente personal.
@@ -33,7 +33,7 @@ class AgentPers:
 
         return response
 
-    def personalidad(self, question):
+    def personality(self, question):
 
         template_rag = """
         Eres un asistente personal.
@@ -70,7 +70,7 @@ class AgentPers:
 
         return response
 
-    def consulta(self, informacion):
+    def consultation(self, informacion):
 
         template_rag = """
         Eres un asistente personal.
