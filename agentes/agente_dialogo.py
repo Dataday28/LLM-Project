@@ -3,8 +3,16 @@ from agentes.agente_personalizacion import AgentPers
 from agentes.agente_recuperacion import AgentRec
 from agentes.agente_organizacion import AgentOrg
 from agentes.agente_generacion import AgenteGen
+import time
 
 class AgentDialg:
+
+    # Imprime el texto lentamente
+    def print_slowly(self, text, delay=0.03):
+        for char in text:
+            print(char, end='', flush=True)
+            time.sleep(delay)
+        print()
 
     # Por medio del LLM analisa la clase de pregunta 
     def answer(self, question):
@@ -57,24 +65,29 @@ class AgentDialg:
     # Función para interactuar con el agente
     def interact_with_agent(self):
 
-        print(AgentPers().greeting())
+        query = AgentPers().greeting()
+        self.print_slowly(str(query))
         
         while True:
             user_input = input("Tú: ")
 
             if "salir" in user_input.lower() or "adios" in user_input.lower():
-                print(AgentPers().farewell())
+                query = AgentPers().farewell()
+                self.print_slowly(str(query))
                 break
 
             dialogue_org = self.answer(user_input)
 
             if "consulta" in dialogue_org:
-                response = self.query_and_organize(user_input)
+                query = self.query_and_organize(user_input)
+                response = str(query)
             elif "instrucion" in dialogue_org:
-                response = self.dialogue_add(user_input)
+                query = self.dialogue_add(user_input)
+                response = str(query)
             elif "nada" in dialogue_org:
-                response = self.dialogue_normal(user_input)
+                query = self.dialogue_normal(user_input)
+                response = str(query)
             else:
                 response = "Lo siento, no entiendo tu pregunta."
 
-            print(f"Agente: {response}")
+            self.print_slowly(f"Agente: {response}")

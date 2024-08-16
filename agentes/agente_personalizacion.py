@@ -1,6 +1,7 @@
 from llm.gemini import get_response
 
 class AgentPers:
+    
 
     def greeting(self):
 
@@ -93,3 +94,4 @@ class AgentPers:
         response = get_response(final_prompt)
 
         return response
+    

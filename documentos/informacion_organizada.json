@@ -16,16 +16,16 @@
     ],
     "Tareas": [
         {
-            "descripcion": "Entrgar proyecto de LLM",
-            "fecha_limite": "2024-09-02",
-            "prioridad": "Alta",
-            "estado": "En"
-        },
-        {
             "descripcion": "Preparar informe mensual",
             "fecha_limite": "2024-08-07",
             "prioridad": "Alta",
             "estado": "Pendiente"
+        },
+        {
+            "descripcion": "Entrgar proyecto de LLM",
+            "fecha_limite": "2024-09-02",
+            "prioridad": "Alta",
+            "estado": "Completado"
         },
         {
             "descripcion": "Actualizar sitio web",
