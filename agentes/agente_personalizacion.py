@@ -1,11 +1,16 @@
 from llm.gemini import get_response
+from datetime import datetime
 
 class AgentPers:
     
+    def obtener_fecha_hora_actual(self):
+        ahora = datetime.now()
+        fecha_hora_formateada = ahora.strftime("%Y-%m-%d %H:%M:%S")
+        return fecha_hora_formateada
 
     def greeting(self):
 
-        template_rag = """
+        template = """
         Eres un asistente personal.
         Seras un asistente con una actitud seria y formal.
 
@@ -13,7 +18,7 @@ class AgentPers:
 
         """
 
-        final_prompt = template_rag.format()
+        final_prompt = template.format()
 
         response = get_response(final_prompt)
 
@@ -21,14 +26,14 @@ class AgentPers:
 
     def farewell(self):
 
-        template_rag = """
+        template = """
         Eres un asistente personal.
         Seras un asistente con una actitud seria y formal.
 
         Tu trabajo sera generar una despedida aleatoria.
         """
 
-        final_prompt = template_rag.format()
+        final_prompt = template.format()
 
         response = get_response(final_prompt)
 
@@ -36,15 +41,19 @@ class AgentPers:
 
     def personality(self, question):
 
-        template_rag = """
+        date = self.obtener_fecha_hora_actual()
+
+        template = """
         Eres un asistente personal.
         Apartir de ahora responderas todas las preguntas de manera seria y formal.
+        Utilizaras fecha_hora para responder preguntas o temas acerca de la fecha y hora. 
         Darás respuestas cortas y fáciles de entender.
 
         Pregunta: {question}
+        fecha_hora: {date}
         """
 
-        final_prompt = template_rag.format(question=question)
+        final_prompt = template.format(question=question, date=date)
 
         response = get_response(final_prompt)
 

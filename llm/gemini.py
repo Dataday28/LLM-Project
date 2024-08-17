@@ -3,7 +3,7 @@ import google.generativeai as genai
 # Gemini
 
 # API KEY de Gemini
-GOOGLE_API_KEY = "AIzaSyALHW5Qvf53ivMtKfu0uZXMIe9IbKXeqx8"
+GOOGLE_API_KEY = ""
 
 gemini_key = GOOGLE_API_KEY
 

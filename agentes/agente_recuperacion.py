@@ -1,5 +1,6 @@
 from sentence_transformers import SentenceTransformer, util
 from llm.gemini import get_response
+from datetime import datetime
 import json
 import torch
 import os
@@ -21,6 +22,11 @@ class AgentRec:
         with open(name, 'w') as file:
             json.dump(archivo, file, ensure_ascii=False, indent=4)
 
+    def obtener_fecha_hora_actual(self):
+        ahora = datetime.now()
+        fecha_hora_formateada = ahora.strftime("%Y-%m-%d %H:%M:%S")
+        return fecha_hora_formateada
+
     # Función para cargar documentos desde un archivo JSON
     def load_documents_from_json(self, file_path):
         agenda_data = self.read_json_file(file_path)
@@ -40,10 +46,14 @@ class AgentRec:
     # Función para crear un prompt para agregar o modificar un item en la agenda
     def prompt_add_or_mod_item(self, context, input):
 
+        date = self.obtener_fecha_hora_actual()
+
         template_rag = """
         Eres un asistente que modifica archivos JSON según las instrucciones del usuario.
         El archivo JSON contiene una agenda en formato JSON.
-        Tu trabajo sera agregar un nuevo item a la agenda o midificarlo, dependiendo del input.
+        Tu trabajo sera agregar un nuevo item a la agenda o modificarlo, dependiendo del input.
+        Las fechas no siempre se mencionan completamente, sino que a veces aparecen mencionadas como “ayer”, “mañana”, etc.
+        Para saber la fecha actual utilizaras: fecha
 
         Debe abstenerse de utilizar comillas invertidas junto con palabras como "json", solo imprime el puro JSON.
 
@@ -51,9 +61,11 @@ class AgentRec:
 
         input:{input}
 
+        fcha:{date}
+
         """
 
-        final_prompt = template_rag.format(context=context, input=input)
+        final_prompt = template_rag.format(context=context, input=input, date=date)
 
         response = get_response(final_prompt)
 

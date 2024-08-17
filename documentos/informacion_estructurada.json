@@ -3,23 +3,19 @@
         {
             "descripcion": "Día del cliente",
             "fecha": "2024-08-20"
-        }
-    ],
-    "eventos": [
+        },
         {
-            "descripcion": "Reunión con el equipo",
-            "ubicacion": "Sala de conferencias",
-            "fecha": "2024-08-20",
-            "hora": "10:00",
-            "descripcion_detallada": "Discutir el progreso del proyecto"
+            "descripcion": "Aniversario de la empresa",
+            "fecha": "2024-08-15"
         }
     ],
+    "eventos": [],
     "tareas": [
         {
-            "descripcion": "Preparar informe mensual",
-            "fecha_limite": "2024-08-07",
-            "prioridad": "Alta",
-            "estado": "Pendiente"
+            "descripcion": "Actualizar sitio web",
+            "fecha_limite": "2024-08-12",
+            "prioridad": "Media",
+            "estado": "Completado"
         },
         {
             "descripcion": "Entrgar proyecto de LLM",
@@ -28,10 +24,10 @@
             "estado": "Completado"
         },
         {
-            "descripcion": "Actualizar sitio web",
-            "fecha_limite": "2024-08-12",
-            "prioridad": "Media",
-            "estado": "Completado"
+            "descripcion": "Preparar informe mensual",
+            "fecha_limite": "2024-08-07",
+            "prioridad": "Alta",
+            "estado": "Pendiente"
         }
     ]
 }
