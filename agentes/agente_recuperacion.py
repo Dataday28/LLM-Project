@@ -108,6 +108,28 @@ class AgentRec:
         top_k = torch.topk(scores, k=5).indices.tolist()[0]  # Convertir a una lista de índices
 
         # Recuperar los documentos más relevantes
-        context = [documents[idx]['content'] for idx in top_k]
+        relevant_documents = [documents[idx]['content'] for idx in top_k]
 
-        return context
+        context = "\n".join(relevant_documents)
+
+        date = self.obtener_fecha_hora_actual()
+
+        template_rag = """Eres un Asitente Personal.
+        Responde a la pregunta basandote en el contexto de la agenda y la fecha actual.
+        El contexto y la fecha actual esta delimitado por las comillas invertidas.
+        Las fechas no siempre se mencionan completamente, sino que a veces aparecen mencionadas como “ayer”, “mañana”, etc.
+        Contesta como si la respuesta la estuviera dando un asitente virtual.
+
+        ```
+        contexto: {context}
+        fecha actual: {date}
+        ```
+
+        Pregunta: {question}
+        """
+
+        final_prompt = template_rag.format(context=context, question=question, date=date)
+
+        response = get_response(final_prompt)
+
+        return response

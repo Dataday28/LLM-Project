@@ -54,7 +54,7 @@ class AgentDialg:
     def query_and_organize(self, question):
 
         agent_rag = AgentRec().rag_query_with_embeddings(question)
-        agent_orga = AgentOrg().agent_org(agent_rag)
+        agent_orga = AgentOrg().generate_resume(agent_rag)
         gen_ideas = AgenteGen().generate_ideas(agent_orga)
         persona = AgentPers().consultation(gen_ideas)
 
@@ -66,14 +66,14 @@ class AgentDialg:
     def interact_with_agent(self):
 
         query = AgentPers().greeting()
-        self.print_slowly(str(query))
+        self.print_slowly(f"\n {str(query)}")
         
         while True:
             user_input = input("Tú: ")
 
             if "salir" in user_input.lower() or "adios" in user_input.lower():
                 query = AgentPers().farewell()
-                self.print_slowly(str(query))
+                self.print_slowly(f"\n {str(query)}")
                 break
 
             dialogue_org = self.answer(user_input)
@@ -90,4 +90,4 @@ class AgentDialg:
             else:
                 response = "Lo siento, no entiendo tu pregunta."
 
-            self.print_slowly(f"Agente: {response}")
+            self.print_slowly(f"\n Agente: {response}")

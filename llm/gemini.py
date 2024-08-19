@@ -1,9 +1,17 @@
 import google.generativeai as genai
+import yaml
+import os
+
+
+current_dir = os.path.dirname(__file__)
+config_yml = os.path.join(current_dir, 'config.yml')
+
+config = yaml.safe_load(open(config_yml))
 
 # Gemini
 
 # API KEY de Gemini
-GOOGLE_API_KEY = ""
+GOOGLE_API_KEY = config["GOOGLE_API_KEY"]
 
 gemini_key = GOOGLE_API_KEY
 
